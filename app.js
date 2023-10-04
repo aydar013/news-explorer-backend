@@ -6,18 +6,13 @@ const helmet = require("helmet");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
-const rateLimit = require("express-rate-limit");
+const { limiter } = require("./utils/rate-limiter");
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3001, MONGO_URL } = process.env;
 const app = express();
 
-mongoose.connect("mongodb://127.0.0.1:27017/news_explorer_db", (r) => {
+mongoose.connect(MONGO_URL, (r) => {
   console.log("connected to DB", r);
-});
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // maximum 100 requests per windowMs
 });
 
 const routes = require("./routes");

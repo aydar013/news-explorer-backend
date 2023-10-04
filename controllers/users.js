@@ -11,13 +11,7 @@ const NotFoundError = require("../errors/not-found-error");
 const createUser = (req, res, next) => {
   const { name, email, password } = req.body;
 
-  User.findOne({ email }).then((existingUser) => {
-    if (existingUser) {
-      return next(new ConflictError("Email already exists"));
-    }
-    return null;
-  });
-  return bcrypt
+  bcrypt
     .hash(password, 10)
     .then((hash) => User.create({ name, email, password: hash }))
     .then((user) => {
@@ -28,12 +22,11 @@ const createUser = (req, res, next) => {
     .catch((e) => {
       if (e.name === "ValidationError") {
         next(new BadRequestError("Bad request, invalid data input"));
-      } else {
-        next(e);
       }
       if (e.code === 11000) {
         next(new ConflictError("A user with the current email already exists"));
       }
+      next(e);
     });
 };
 
