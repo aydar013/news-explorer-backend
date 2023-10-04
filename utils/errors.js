@@ -23,10 +23,10 @@ const handleErrors = (req, res, e) => {
     res
       .status(ERRORS.UNAUTHORIZED)
       .send({ message: "You are not authorized to do this" });
-    return res
-      .status(ERRORS.INTERNAL_SERVER_ERROR)
-      .send({ message: "Something went wrong" });
   }
+  return res
+    .status(ERRORS.INTERNAL_SERVER_ERROR)
+    .send({ message: "Something went wrong" });
 };
 
 module.exports = {
