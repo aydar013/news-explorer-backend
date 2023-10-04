@@ -6,11 +6,12 @@ const helmet = require("helmet");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
+const { limiter } = require("./utils/rate-limiter");
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3001, MONGO_URL } = process.env;
 const app = express();
 
-mongoose.connect("mongodb://127.0.0.1:27017/news_explorer_db", (r) => {
+mongoose.connect(MONGO_URL, (r) => {
   console.log("connected to DB", r);
 });
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(requestLogger);
+app.use(limiter);
 
 app.get("/crash-test", () => {
   setTimeout(() => {
