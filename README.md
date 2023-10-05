@@ -1,4 +1,4 @@
-# news-explorer-backend
+# News Explorer Backend
 
 This is the news explorer web application which is focused on searching news on any topic and saving them.
 
