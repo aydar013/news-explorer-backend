@@ -4,7 +4,7 @@ This is the news explorer web application which is focused on searching news on 
 
 ## Domain
 
-- FRONT END: [https://www.newsexplorer.lozan.com]
+- FRONT END: [https://newsexplorer.lozan.com]
 - BACK END: [https://api.newsexplorer.lozan.com]
 
 ### General info
