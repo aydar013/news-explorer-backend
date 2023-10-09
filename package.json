@@ -11,7 +11,7 @@
   },
   "author": "Aidar Shaidullin",
   "license": "ISC",
-  "homepage": "https://www.newsexplorer.lozan.com",
+  "homepage": "https://newsexplorer.lozan.com",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
