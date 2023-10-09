@@ -17,10 +17,10 @@ mongoose.connect(MONGO_URL, (r) => {
 
 const routes = require("./routes");
 
-app.use(express.json());
 app.use(cors);
-app.use(helmet());
 app.use(requestLogger);
+app.use(helmet());
+app.use(express.json());
 app.use(limiter);
 
 app.get("/crash-test", () => {
