@@ -11,8 +11,9 @@ const rateLimiter = require("./utils/rate-limiter");
 const { PORT = 3001, MONGO_URL } = process.env;
 const app = express();
 
-mongoose.connect(MONGO_URL, (r) => {
-  console.log("connected to DB", r);
+mongoose.connect(MONGO_URL, {
+  useNewUrlParser: "true",
+  useUnifiedTopology: "true",
 });
 
 const routes = require("./routes");
