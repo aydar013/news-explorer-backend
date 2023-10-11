@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
-const { limiter } = require("./utils/rate-limiter");
+const rateLimiter = require("./utils/rate-limiter");
 
 const { PORT = 3001, MONGO_URL } = process.env;
 const app = express();
@@ -21,7 +21,7 @@ app.use(cors());
 app.use(helmet());
 app.use(requestLogger);
 app.use(express.json());
-app.use(limiter);
+app.use(rateLimiter);
 
 app.get("/crash-test", () => {
   setTimeout(() => {
