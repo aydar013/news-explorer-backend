@@ -8,10 +8,10 @@ const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 const rateLimiter = require("./utils/rate-limiter");
 
-const { PORT = 3001, MONGO_URL } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 
-mongoose.connect(MONGO_URL, {
+mongoose.connect("mongodb://127.0.0.1:27017/news_explorer_db", {
   useNewUrlParser: "true",
   useUnifiedTopology: "true",
 });
