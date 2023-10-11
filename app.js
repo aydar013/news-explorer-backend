@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
+const cors = require("./middlewares/cors");
 const helmet = require("helmet");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/error-handler");
@@ -17,7 +17,7 @@ mongoose.connect(MONGO_URL, (r) => {
 
 const routes = require("./routes");
 
-app.use(cors());
+app.use(cors);
 app.use(helmet());
 app.use(requestLogger);
 app.use(express.json());
