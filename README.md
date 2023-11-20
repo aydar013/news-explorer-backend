@@ -2,6 +2,8 @@
 
 This is the news explorer web application which is focused on searching news on any topic and saving them.
 
+![Screenshot 2023-10-25 174338](https://github.com/aydar013/news-explorer-backend/assets/121465617/05a97d49-db71-4145-a14f-456ca2c7bc53)
+
 ## Domain
 
 - FRONT END: [https://newsexplorer.lozan.com]
